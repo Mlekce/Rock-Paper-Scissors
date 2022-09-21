@@ -1,4 +1,7 @@
 'use strict'
+function  startGame(){
+        winner(getComputerChoice(),userChoice());
+}
 //Random computer choice logic
 const choice = ['rock', 'paper', 'siccssors'];
 const randomInteger = function (min, max) {
@@ -18,7 +21,7 @@ const userChoice = function(){
 function winner(playerChoice, computerChoice){
     if (playerChoice !== 'rock' && playerChoice !== 'siccssors' && playerChoice !== 'paper'){
         alert("Wrong input, enter rock paper or siccssors");
-        userChoice();
+        startGame();
     }
     else {
         if (playerChoice == 'rock' && computerChoice == 'siccssors'){
@@ -32,16 +35,15 @@ function winner(playerChoice, computerChoice){
         }
         else{
             console.log("You did not win!");
-            let repeater = prompt("Want to play another round?")
-            startGame();
+            let repeater = prompt("Want to play another round? Press Y or y")
+            if(repeater == 'Y' || repeater == "y"){
+                winner(userChoice(), getComputerChoice());
+            }
+            else {
+                alert("Game Over, press f5 to reload.")
+            }   
         }
-
     }
 }
-//restart game
-function startGame(){
-    console.log(getComputerChoice());
-    console.log(userChoice());
-}
-startGame();
+
 winner(userChoice(), getComputerChoice());
