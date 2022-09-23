@@ -1,49 +1,66 @@
 'use strict'
-function  startGame(){
-        winner(getComputerChoice(),userChoice());
-}
-//Random computer choice logic
-const choice = ['rock', 'paper', 'siccssors'];
-const randomInteger = function (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-const getComputerChoice = function(){
-    return choice[randomInteger(0,2)];
-} 
-
-//Player logic and validation of choice.
-const userChoice = function(){
-    let a = prompt("Please enter rock, paper or siccssors.");
-    return a;
+//Variables
+let playerScore = 0;
+let computerScore = 0;
+const computer = function(){
+    const choices = ['rock', 'paper', 'siccssors'];
+    const randomizer = Math.trunc(Math.random()*3);
+    return choices[randomizer];
 };
-
-//game logic
-function winner(playerChoice, computerChoice){
-    if (playerChoice !== 'rock' && playerChoice !== 'siccssors' && playerChoice !== 'paper'){
-        alert("Wrong input, enter rock paper or siccssors");
-        startGame();
+const player = function(){
+    let choice = prompt("Enter rock, paper or siccssors.").toLowerCase();
+    if (!choice || (choice !== 'rock' && choice !== 'paper' && choice !== 'siccssors')){
+        const choices = ['rock', 'paper', 'siccssors'];
+        const randomizer = Math.trunc(Math.random()*3);
+        return choices[randomizer];
+    }
+    else
+        return choice;
+};
+//Main game      
+function game() {
+    for(let i = 0; i < 5; i++){
+        playRound(player(),computer());
+    }
+    winner(playerScore, computerScore);
+}        
+//Game RPS    
+function playRound(playerSelection, computerSelection){            
+    if (playerSelection == 'rock' && computerSelection == 'siccssors'){
+        playerScore++;
+        console.log(`You won player choice was ${playerSelection}, computer choice was ${computerSelection}, player score is ${playerScore}, computer score is ${computerScore}`);
+        return playerScore, computerScore;
+    }
+    else if (playerSelection == 'paper' && computerSelection == 'rock'){
+        playerScore++;
+        console.log(`You won player choice was ${playerSelection}, computer choice was ${computerSelection}, player score is ${playerScore}, computer score is ${computerScore}`);
+        return  playerScore, computerScore;
+    }
+    else if (playerSelection == 'siccssors' && computerSelection == 'paper'){
+        playerScore++;
+        console.log(`You won player choice was ${playerSelection}, computer choice was ${computerSelection}, player score is ${playerScore}, computer score is ${computerScore}`);
+        return playerScore, computerScore;
+    }
+    else if (playerSelection == computerSelection ){
+        console.log(`DRAW! player choice was ${playerSelection}, computer choice was ${computerSelection}, player score is ${playerScore}, computer score is ${computerScore}`);
+        return playerScore, computerScore;
     }
     else {
-        if (playerChoice == 'rock' && computerChoice == 'siccssors'){
-            console.log("You won!");
-        }
-        else if (playerChoice == 'paper' && computerChoice == 'rock'){
-            console.log("You won!");
-        }
-        else if (playerChoice == 'siccssors' && computerChoice == 'paper'){
-            console.log("You won!");
-        }
-        else{
-            console.log("You did not win!");
-            let repeater = prompt("Want to play another round? Press Y or y")
-            if(repeater == 'Y' || repeater == "y"){
-                winner(userChoice(), getComputerChoice());
-            }
-            else {
-                alert("Game Over, press f5 to reload.")
-            }   
-        }
+        computerScore++;
+        console.log(`You lost player choice was ${playerSelection}, computer choice was ${computerSelection}, player score is ${playerScore}, computer score is ${computerScore}`);
+        return playerScore, computerScore;
+    }
+} 
+//Check winner function
+function winner(player, computer){
+    if(player > computer){
+        console.log(`You won ${player}, computer score ${computer}`);
+     }
+    else if (player < computer){
+        console.log(`You lost ${player}, computer score ${computer}`);
+    }
+    else {
+        console.log(`Draw. ${player}, computer score ${computer}`);
     }
 }
-
-winner(userChoice(), getComputerChoice());
+game();
