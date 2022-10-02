@@ -1,17 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe game!</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Rock Paper Siccssors game!</title>
+  </head>
 
-
-
-
-
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="headline">
+          <h1>ROCK, PAPER, SICCSSORS GAME!</h1>
+          <strong>Choose your pick: Rock, Paper or Siccssors. Goodluck!</strong>
+        </div>
+        <div class="buttons">
+          <button class="rock">rock</button>
+          <button class="siccssors">siccssors</button>
+          <button class="paper">paper</button>
+        </div>
+      </div>
+      <div class="table">
+        <table>
+          <tr>
+            <td>
+              <p class="playerChoice">Player choice was:</p>
+            </td>
+            <td>
+              <p class="computerChoice">Computer choice was:</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="resoultsPlayer">Player score is: 0</p>
+            </td>
+            <td>
+              <p class="resoultsComputer">Computer score is: 0</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="status">Round resoult: Waiting...</p>
+            </td>
+            <td>
+              <p class="finalScore">Final score status: Waiting...</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
