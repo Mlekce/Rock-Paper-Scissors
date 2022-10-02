@@ -1,1 +1,1 @@
-# TicTacToe
+# RockPaperSiccssors GUI
